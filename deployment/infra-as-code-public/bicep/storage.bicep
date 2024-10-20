@@ -56,7 +56,7 @@ resource storageAccountResource 'Microsoft.Storage/storageAccounts@2023-01-01' =
     supportsHttpsTrafficOnly: true
   }
   sku: {
-    name: 'Premium_LRS'
+    name: 'Standard_LRS'
   }
 }
 
@@ -77,8 +77,7 @@ resource storageAccountFileService 'Microsoft.Storage/storageAccounts/fileServic
       }
     }
     shareDeleteRetentionPolicy: {
-      days: 14
-      enabled: true
+      enabled: false
     }
   }
   // sku: {
@@ -94,9 +93,9 @@ resource storageAccountFileServiceShare 'Microsoft.Storage/storageAccounts/fileS
     storageAccountFileService
   ]
   properties: {
-    accessTier: 'Premium'
+    accessTier: 'Hot'
     enabledProtocols: 'SMB'
-    shareQuota: 1024
+    shareQuota: 256
   }
 }
 
